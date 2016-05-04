@@ -55,7 +55,28 @@
         ViewController *strongSelf = weakSelf;
         if(!strongSelf) return;
 
-        strongSelf.distanceC.text = @"callback";
+        NSNull *badResponse = [NSNull null];
+        if (responses[0] != badResponse) {
+           strongSelf.distanceA.text = [NSString stringWithFormat:@"%.2f km",
+                                           [responses[0] floatValue] / 1000.0];
+        } else {
+           strongSelf.distanceA.text = @"?";
+        }
+
+        if (responses[1] != [NSNull null]) {
+            strongSelf.distanceB.text = [NSString stringWithFormat:@"%.2f km",
+                                            [responses[1] floatValue] / 1000.0];
+        } else {
+            strongSelf.distanceB.text = @"?";
+        }
+
+        if (responses[2] != [NSNull null]) {
+            strongSelf.distanceC.text = [NSString stringWithFormat:@"%.2f km",
+                                            [responses[2] floatValue] / 1000.0];
+        } else {
+            strongSelf.distanceC.text = @"?";
+        }
+
         strongSelf.calculateButton.enabled = YES;
         strongSelf.request = nil;
     };
