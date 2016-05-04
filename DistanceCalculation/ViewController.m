@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *endLocationC;
 @property (weak, nonatomic) IBOutlet UILabel *distanceC;
 
+@property (weak, nonatomic) IBOutlet UITextField *endLocationD;
+@property (weak, nonatomic) IBOutlet UILabel *distanceD;
+
 @property (weak, nonatomic) IBOutlet UIButton *calculateButton;
 
 @end
@@ -39,8 +42,9 @@
     NSString *destA = self.endLocationA.text;
     NSString *destB = self.endLocationB.text;
     NSString *destC = self.endLocationC.text;
+    NSString *destD = self.endLocationD.text;
 
-    NSArray *destinations = @[destA,destB,destC];
+    NSArray *destinations = @[destA,destB,destC,destD];
 
     self.request = [self.request initWithLocationDescriptions:destinations
                                             sourceDescription:start];
@@ -55,8 +59,7 @@
         ViewController *strongSelf = weakSelf;
         if(!strongSelf) return;
 
-        NSNull *badResponse = [NSNull null];
-        if (responses[0] != badResponse) {
+        if (responses[0] != [NSNull null]) {
            strongSelf.distanceA.text = [NSString stringWithFormat:@"%.2f km",
                                            [responses[0] floatValue] / 1000.0];
         } else {
@@ -75,6 +78,13 @@
                                             [responses[2] floatValue] / 1000.0];
         } else {
             strongSelf.distanceC.text = @"?";
+        }
+
+        if (responses[3] != [NSNull null]) {
+            strongSelf.distanceD.text = [NSString stringWithFormat:@"%.2f km",
+                                         [responses[3] floatValue] / 1000.0];
+        } else {
+            strongSelf.distanceD.text = @"?";
         }
 
         strongSelf.calculateButton.enabled = YES;
