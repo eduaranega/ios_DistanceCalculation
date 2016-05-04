@@ -91,7 +91,7 @@
         strongSelf.request = nil;
     };
 
-    // send a start messega to the object
+    // send a start message to the object
     [self.request start];
 
 }
