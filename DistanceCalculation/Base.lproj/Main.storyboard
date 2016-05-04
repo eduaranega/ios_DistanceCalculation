@@ -23,8 +23,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIZ-rG-yrz">
-                                <rect key="frame" x="96" y="277" width="128" height="30"/>
+                                <rect key="frame" x="96" y="279" width="128" height="30"/>
                                 <state key="normal" title="Calculate Distance"/>
+                                <connections>
+                                    <action selector="calculateButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ell-c5-X4T"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Destination" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RD2-6b-313">
                                 <rect key="frame" x="20" y="83" width="150" height="30"/>
@@ -78,6 +81,16 @@
                             <constraint firstItem="v6g-LF-TT0" firstAttribute="centerY" secondItem="ePz-fx-KVd" secondAttribute="centerY" id="w6o-2u-WLB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calculateButton" destination="OIZ-rG-yrz" id="Ea4-y0-fXC"/>
+                        <outlet property="distanceA" destination="Jwk-qh-4kf" id="dkl-vU-ubR"/>
+                        <outlet property="distanceB" destination="d0h-zw-CDW" id="SGl-2w-bfD"/>
+                        <outlet property="distanceC" destination="v6g-LF-TT0" id="28W-6e-8av"/>
+                        <outlet property="endLocationA" destination="RD2-6b-313" id="jXQ-e6-uNe"/>
+                        <outlet property="endLocationB" destination="T4i-Ba-tJC" id="FVy-EF-g6M"/>
+                        <outlet property="endLocationC" destination="ePz-fx-KVd" id="jiI-1n-49W"/>
+                        <outlet property="startLocation" destination="jh3-8d-jpA" id="P06-Ji-QgA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
