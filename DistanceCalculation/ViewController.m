@@ -45,11 +45,19 @@
     self.request = [self.request initWithLocationDescriptions:destinations
                                             sourceDescription:start];
 
+    // copy to the reference to self
+    // so that ARC will not face a retain cycle inside the callback
+    __weak ViewController *weakSelf = self;
+
     // define the callback
     self.request.callback = ^void(NSArray *responses) {
-        self.distanceC.text = @"callback";
-        self.calculateButton.enabled = YES;
-        self.request = nil;
+
+        ViewController *strongSelf = weakSelf;
+        if(!strongSelf) return;
+
+        strongSelf.distanceC.text = @"callback";
+        strongSelf.calculateButton.enabled = YES;
+        strongSelf.request = nil;
     };
 
     // send a start messega to the object
